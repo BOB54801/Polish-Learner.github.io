@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprendre le Polonais - Verbes</title>
+    <meta name="description" content="Apprenez les verbes polonais et leurs conjugaisons.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="vocabulaire.html" class="logo">
+                <span class="logo-text">Polska</span><span class="logo-highlight">App</span>
+            </a>
+            <div class="nav-links">
+                <a href="vocabulaire.html">Vocabulaire</a>
+                <a href="verbes.html" class="active">Verbes</a>
+                <a href="chiffres.html">Chiffres</a>
+                <a href="date.html">Dates</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Les Verbes Polonais</h1>
+        <p class="page-desc">Découvrez comment conjuguer les verbes principaux au présent. Cliquez sur le polonais pour entendre la prononciation !</p>
+
+        <div class="explanation-block">
+            <h3>📖 Comment fonctionne la conjugaison au présent ?</h3>
+            <p>En polonais, les verbes se conjuguent selon la personne (Je, Tu, Il/Elle, Nous, Vous, Ils/Elles). Il existe trois grands groupes de conjugaison pour le présent, qui se reconnaissent par les terminaisons de la 1ère (Je) et 2ème (Tu) personne du singulier :</p>
+            <ul>
+                <li><strong>Le groupe -ę / -esz</strong> : ex. <em>Móc</em> (Pouvoir) -> <em>Ja mogę, Ty możesz</em></li>
+                <li><strong>Le groupe -ę / -isz (-ysz)</strong> : ex. <em>Mówić</em> (Parler) -> <em>Ja mówię, Ty mówisz</em></li>
+                <li><strong>Le groupe -m / -sz</strong> : ex. <em>Mieć</em> (Avoir) -> <em>Ja mam, Ty masz</em></li>
+            </ul>
+            <p>Certains verbes essentiels comme <strong>Być</strong> (Être), <strong>Iść</strong> (Aller à pied) ou <strong>Jeść</strong> (Manger) sont irréguliers et doivent être appris par cœur.</p>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table" id="verbes-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%">Français</th>
+                        <th style="width: 30%">Polonais</th>
+                        <th style="width: 25%">Groupe (Présent)</th>
+                        <th style="width: 15%">Écouter</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Injecté via JS -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tbody = document.querySelector('#verbes-table tbody');
+            
+            // TTS Setup
+            let bestVoice = null;
+            function updateVoices() {
+                const voices = window.speechSynthesis.getVoices();
+                if (voices.length > 0) {
+                    bestVoice = voices.find(v => v.lang.includes('pl-PL') && (v.name.includes('Natural') || v.name.includes('Premium') || v.name.includes('Google'))) 
+                        || voices.find(v => v.lang.includes('pl-PL'))
+                        || voices.find(v => v.lang.includes('pl'));
+                }
+            }
+            window.speechSynthesis.onvoiceschanged = updateVoices;
+            updateVoices();
+
+            window.speakWord = function(word) {
+                if ('speechSynthesis' in window) {
+                    const utterance = new SpeechSynthesisUtterance(word);
+                    utterance.lang = 'pl-PL';
+                    if (bestVoice) utterance.voice = bestVoice;
+                    utterance.rate = 0.9;
+                    window.speechSynthesis.speak(utterance);
+                }
+            };
+
+            window.toggleConjugation = function(btn, index) {
+                const row = document.getElementById('conj-' + index);
+                if (row.style.display === 'none') {
+                    row.style.display = 'table-row';
+                    btn.textContent = 'Masquer';
+                } else {
+                    row.style.display = 'none';
+                    btn.textContent = 'Voir';
+                }
+            };
+
+            tbody.innerHTML = verbes.map((verbe, index) => {
+                const escapedPl = verbe.pl.replace(/'/g, "\\'");
+                return `
+                    <tr>
+                        <td><strong>${verbe.fr}</strong></td>
+                        <td><span class="pl-text clickable-row" onclick="speakWord('${escapedPl}')" title="Écouter la prononciation">${verbe.pl}</span></td>
+                        <td><span style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; font-size: 0.9em;">${verbe.groupe}</span></td>
+                        <td>
+                            <button class="btn btn-small" onclick="toggleConjugation(this, ${index})" style="margin-right: 5px;">Voir</button>
+                            <span class="tts-btn" onclick="speakWord('${escapedPl}')">🔊</span>
+                        </td>
+                    </tr>
+                    <tr id="conj-${index}" style="display: none; background: rgba(255,255,255,0.02);">
+                        <td colspan="4" style="padding: 1rem;">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.95em;">
+                                <div><strong style="color: #93c5fd;">Ja (Je):</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[0]}')">${verbe.conjugaisons[0]}</span></div>
+                                <div><strong style="color: #93c5fd;">Ty (Tu):</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[1]}')">${verbe.conjugaisons[1]}</span></div>
+                                <div><strong style="color: #93c5fd;">On/Ona/Ono:</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[2]}')">${verbe.conjugaisons[2]}</span></div>
+                                <div><strong style="color: #93c5fd;">My (Nous):</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[3]}')">${verbe.conjugaisons[3]}</span></div>
+                                <div><strong style="color: #93c5fd;">Wy (Vous):</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[4]}')">${verbe.conjugaisons[4]}</span></div>
+                                <div><strong style="color: #93c5fd;">Oni/One (Ils):</strong> <span class="pl-text clickable-row" onclick="speakWord('${verbe.conjugaisons[5]}')">${verbe.conjugaisons[5]}</span></div>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        });
+    </script>
+</body>
+</html>
