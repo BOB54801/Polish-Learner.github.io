@@ -4,31 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apprendre le Polonais - Vocabulaire</title>
+    <title>Apprendre le Polonais - Vocabulaire C1</title>
     <meta name="description"
-        content="Apprenez le vocabulaire polonais trié par catégories avec des tableaux interactifs.">
+        content="Apprenez le vocabulaire polonais de niveau C1 trié par catégories avec des tableaux interactifs.">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="vocabulaire.html" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-text">Polska</span><span class="logo-highlight">App</span>
             </a>
             <div class="nav-links">
-                <a href="vocabulaire.html" class="active">Vocabulaire</a>
-                <a href="verbes.html">Verbes</a>
-                <a href="chiffres.html">Chiffres</a>
-                <a href="date.html">Dates</a>
+                <a href="a1.html">A1</a>
+                <a href="a2.html">A2</a>
+                <a href="b1.html">B1</a>
+                <a href="b2.html">B2</a>
+                <a href="c1.html" class="active">C1</a>
             </div>
         </nav>
     </header>
 
     <main class="container">
-        <h1 class="page-title">Vocabulaire</h1>
-        <p class="page-desc">Testez vos connaissances et gagnez en niveau automatiquement via les tests ! (Niveaux de 1
-            à 5)</p>
+        <h1 class="page-title">Vocabulaire <span class="level-badge">Niveau C1</span></h1>
+        <p class="page-desc">Apprenez le vocabulaire polonais essentiel pour le niveau C1 (Avancé). Testez vos connaissances et gagnez en niveau de maîtrise (1 à 5) !</p>
 
         <!-- Barre de progression globale -->
         <div id="progress-dashboard" class="progress-dashboard">
@@ -129,7 +129,7 @@
                 let map = saved ? JSON.parse(saved) : {};
                 vocabulaire.forEach(mot => {
                     if (map[mot.fr] === undefined) {
-                        map[mot.fr] = mot.niveau;
+                        map[mot.fr] = 1;
                     }
                 });
                 return map;
@@ -139,20 +139,23 @@
                 localStorage.setItem('vocab_levels', JSON.stringify(levelsMap));
             }
 
+            const pageLevel = "C1";
+            const levelVocab = vocabulaire.filter(mot => mot.niveau === pageLevel);
+
             // --- Progression globale ---
             function updateProgressBar() {
-                const total = vocabulaire.length;
+                const total = levelVocab.length;
                 const maxScore = total * 5;
                 let currentScore = 0;
                 let levelCounts = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
-                vocabulaire.forEach(mot => {
+                levelVocab.forEach(mot => {
                     const lvl = levelsMap[mot.fr] || 1;
                     currentScore += lvl;
                     levelCounts[lvl]++;
                 });
 
-                const percent = Math.round((currentScore / maxScore) * 100);
+                const percent = total > 0 ? Math.round(((currentScore - total) / (maxScore - total)) * 100) : 0;
                 const mastered = levelCounts[5];
 
                 document.getElementById('progress-percent').textContent = percent + '%';
@@ -211,7 +214,7 @@
                 const tocLinks = tocContainer.querySelector('.toc-links');
                 container.appendChild(tocContainer);
 
-                const parCategorie = vocabulaire.reduce((acc, mot) => {
+                const parCategorie = levelVocab.reduce((acc, mot) => {
                     if (!acc[mot.categorie]) {
                         acc[mot.categorie] = [];
                     }
