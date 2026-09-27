@@ -31,7 +31,6 @@ const vocabulaire = [
     { fr: "J'ai une question", pl: "Mam pytanie", niveau: "Chapitre 1", categorie: "Mots de base" },
     { fr: "Qu'est-ce que ça veut dire ?", pl: "Co to znaczy?", niveau: "Chapitre 1", categorie: "Mots de base" },
     { fr: "Comment dit-on en polonais... ?", pl: "Jak się mówi po polsku...?", niveau: "Chapitre 1", categorie: "Mots de base" },
-    { fr: "Peut-on fumer ici ?", pl: "Czy tu można palić?", niveau: "Chapitre 1", categorie: "Mots de base" },
 
     // En classe (W klasie)
     { fr: "Répétez, s'il vous plaît", pl: "Proszę powtórzyć", niveau: "Chapitre 1", categorie: "En classe" },
