@@ -15,14 +15,9 @@ const vocabulaire = [
     { fr: "Mon prénom est...", pl: "Mam na imię...", niveau: "Chapitre 1", categorie: "Présentations" },
     { fr: "Comment t'appelles-tu ? (Informel)", pl: "Jak masz na imię?", niveau: "Chapitre 1", categorie: "Présentations" },
     { fr: "Comment t'appelles-tu ? (Nom, Informel)", pl: "Jak się nazywasz?", niveau: "Chapitre 1", categorie: "Présentations" },
-    { fr: "Comment vous appelez-vous ? (Monsieur / Madame)", pl: "Jak pan / pani ma na imię?", niveau: "Chapitre 1", categorie: "Présentations" },
-    { fr: "Comment vous appelez-vous ? (Nom, Monsieur / Madame)", pl: "Jak się pan / pani nazywa?", niveau: "Chapitre 1", categorie: "Présentations" },
     { fr: "Enchanté(e)", pl: "Miło mi", niveau: "Chapitre 1", categorie: "Présentations" },
-    { fr: "Très enchanté(e)", pl: "Bardzo mi miło", niveau: "Chapitre 1", categorie: "Présentations" },
     { fr: "Moi de même", pl: "Mnie również", niveau: "Chapitre 1", categorie: "Présentations" },
     { fr: "Ravi de te rencontrer", pl: "Miło mi cię poznać", niveau: "Chapitre 1", categorie: "Présentations" },
-    { fr: "Ravi de vous rencontrer (Monsieur)", pl: "Miło mi pana poznać", niveau: "Chapitre 1", categorie: "Présentations" },
-    { fr: "Ravi de vous rencontrer (Madame)", pl: "Miło mi panią poznać", niveau: "Chapitre 1", categorie: "Présentations" },
 
     // Mots de base (Podstawowe zwroty)
     { fr: "Oui", pl: "Tak", niveau: "Chapitre 1", categorie: "Mots de base" },
