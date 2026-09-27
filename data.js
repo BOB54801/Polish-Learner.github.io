@@ -1,165 +1,91 @@
-const chapter1Vocab = [
-    // Greetings & Goodbyes
-    { pl: "Cześć", en: "Hello / Bye" }, //
-    { pl: "Dzień dobry", en: "Good morning / Good day" }, //
-    { pl: "Dobry wieczór", en: "Good evening" }, //[cite: 1]
-    { pl: "Dobranoc", en: "Good night" }, //[cite: 1]
-    { pl: "Do widzenia", en: "Goodbye" }, //[cite: 1]
-    { pl: "Do jutra", en: "See you tomorrow" }, //[cite: 1]
-    { pl: "Do zobaczenia", en: "See you" }, //[cite: 1]
-    { pl: "Na razie", en: "See you later / Bye for now" }, //[cite: 1]
+const vocabulaire = [
+    // Salutations et adieux
+    { fr: "Bonjour", pl: "Dzień dobry", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "Bonsoir", pl: "Dobry wieczór", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "Bonne nuit", pl: "Dobranoc", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "Salut", pl: "Cześć", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "Au revoir", pl: "Do widzenia", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "À bientôt", pl: "Do zobaczenia", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "À demain", pl: "Do jutra", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
+    { fr: "À plus tard", pl: "Na razie", niveau: "Chapitre 1", categorie: "Salutations et adieux" },
 
-    // Introductions & Personal Info
-    { pl: "Jestem...", en: "I am..." }, //[cite: 1]
-    { pl: "Nazywam się...", en: "My name is (first and last name)..." }, //[cite: 1]
-    { pl: "Mam na imię...", en: "My name is (first name)..." }, //[cite: 1]
-    { pl: "Miło mi", en: "Nice to meet you" }, //[cite: 1]
-    { pl: "Bardzo mi miło", en: "Very nice to meet you" }, //[cite: 1]
-    { pl: "Mnie również", en: "Me too / Likewise" }, //[cite: 1]
-    { pl: "Miło mi cię poznać", en: "Nice to meet you (informal)" }, //[cite: 1]
-    { pl: "Miło mi pana poznać", en: "Nice to meet you (formal, to a man)" }, //[cite: 1]
-    { pl: "Miło mi panią poznać", en: "Nice to meet you (formal, to a woman)" }, //[cite: 1]
-    { pl: "Jak masz na imię?", en: "What is your name? (informal)" }, //[cite: 1]
-    { pl: "Jak się nazywasz?", en: "What is your name/surname? (informal)" }, //[cite: 1]
-    { pl: "Jak pani/pan ma na imię?", en: "What is your name? (formal)" }, //[cite: 1]
-    { pl: "Jak się pani/pan nazywa?", en: "What is your name/surname? (formal)" }, //[cite: 1]
-    { pl: "Imię", en: "First name" }, //[cite: 1]
-    { pl: "Nazwisko", en: "Last name" }, //[cite: 1]
-    { pl: "Narodowość", en: "Nationality" }, //[cite: 1]
-    { pl: "Adres", en: "Address" }, //[cite: 1]
-    { pl: "Numer telefonu", en: "Phone number" }, //[cite: 1]
+    // Présentations (Przedstawianie się)
+    { fr: "Je suis...", pl: "Jestem...", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Je m'appelle (Nom de famille)", pl: "Nazywam się...", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Mon prénom est...", pl: "Mam na imię...", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Comment t'appelles-tu ? (Informel)", pl: "Jak masz na imię?", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Comment t'appelles-tu ? (Nom, Informel)", pl: "Jak się nazywasz?", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Comment vous appelez-vous ? (Monsieur / Madame)", pl: "Jak pan / pani ma na imię?", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Comment vous appelez-vous ? (Nom, Monsieur / Madame)", pl: "Jak się pan / pani nazywa?", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Enchanté(e)", pl: "Miło mi", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Très enchanté(e)", pl: "Bardzo mi miło", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Moi de même", pl: "Mnie również", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Ravi de te rencontrer", pl: "Miło mi cię poznać", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Ravi de vous rencontrer (Monsieur)", pl: "Miło mi pana poznać", niveau: "Chapitre 1", categorie: "Présentations" },
+    { fr: "Ravi de vous rencontrer (Madame)", pl: "Miło mi panią poznać", niveau: "Chapitre 1", categorie: "Présentations" },
 
-    // Classroom & Useful Phrases
-    { pl: "Przepraszam", en: "Excuse me / I'm sorry" }, //[cite: 1]
-    { pl: "Dziękuję / Dziękuję bardzo", en: "Thank you / Thank you very much" }, //[cite: 1]
-    { pl: "Proszę", en: "Please / Here you go / You're welcome" }, //[cite: 1]
-    { pl: "Tak", en: "Yes" }, //[cite: 1]
-    { pl: "Nie", en: "No" }, //[cite: 1]
-    { pl: "Nie rozumiem", en: "I don't understand" }, //[cite: 1]
-    { pl: "Nie wiem", en: "I don't know" }, //[cite: 1]
-    { pl: "Mam pytanie", en: "I have a question" }, //[cite: 1]
-    { pl: "Proszę powtórzyć", en: "Please repeat" }, //[cite: 1]
-    { pl: "Proszę przeliterować", en: "Please spell" }, //[cite: 1]
-    { pl: "Proszę przeczytać", en: "Please read" }, //[cite: 1]
-    { pl: "Proszę napisać", en: "Please write" }, //[cite: 1]
-    { pl: "Co to znaczy?", en: "What does it mean?" }, //[cite: 1]
-    { pl: "Co to jest?", en: "What is this?" }, //[cite: 1]
-    { pl: "Jak się mówi po polsku...?", en: "How do you say ... in Polish?" }, //[cite: 1]
-    { pl: "Gdzie jest...?", en: "Where is...?" }, //[cite: 1]
-    { pl: "Czy tu można palić?", en: "Is smoking allowed here?" }, //[cite: 1]
+    // Mots de base (Podstawowe zwroty)
+    { fr: "Oui", pl: "Tak", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Non", pl: "Nie", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "S'il vous plaît / Je vous en prie", pl: "Proszę", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Merci", pl: "Dziękuję", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Merci beaucoup", pl: "Dziękuję bardzo", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Pardon / Excusez-moi", pl: "Przepraszam", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Je ne comprends pas", pl: "Nie rozumiem", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Je ne sais pas", pl: "Nie wiem", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "J'ai une question", pl: "Mam pytanie", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Qu'est-ce que ça veut dire ?", pl: "Co to znaczy?", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Comment dit-on en polonais... ?", pl: "Jak się mówi po polsku...?", niveau: "Chapitre 1", categorie: "Mots de base" },
+    { fr: "Peut-on fumer ici ?", pl: "Czy tu można palić?", niveau: "Chapitre 1", categorie: "Mots de base" },
 
-    // Directions & Locations
-    { pl: "na lewo", en: "to the left" }, //[cite: 1]
-    { pl: "na prawo", en: "to the right" }, //[cite: 1]
-    { pl: "tu / tutaj", en: "here" }, //[cite: 1]
-    { pl: "tam", en: "there" }, //[cite: 1]
+    // En classe (W klasie)
+    { fr: "Répétez, s'il vous plaît", pl: "Proszę powtórzyć", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Épelez, s'il vous plaît", pl: "Proszę przeliterować", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Lisez, s'il vous plaît", pl: "Proszę przeczytać", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Écrivez, s'il vous plaît", pl: "Proszę napisać", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Professeur (femme)", pl: "Nauczycielka", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Étudiant", pl: "Student", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Étudiante", pl: "Studentka", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "Secrétaire (femme)", pl: "Sekretarka", niveau: "Chapitre 1", categorie: "En classe" },
+    { fr: "École", pl: "Szkoła", niveau: "Chapitre 1", categorie: "En classe" },
 
-    // Nouns & Entities
-    { pl: "szkoła", en: "school" }, //[cite: 1]
-    { pl: "sekretariat", en: "secretariat / office" }, //[cite: 1]
-    { pl: "prezentacja", en: "presentation" }, //[cite: 1]
-    { pl: "ulica", en: "street" }, //[cite: 1]
-    { pl: "toaleta", en: "toilet" }, //[cite: 1]
-    { pl: "woda", en: "water" }, //[cite: 1]
-    { pl: "kawa", en: "coffee" }, //[cite: 1]
-    { pl: "herbata", en: "tea" }, //[cite: 1]
-    { pl: "cukier", en: "sugar" }, //[cite: 1]
-    { pl: "program kulturalny", en: "cultural program" }, //[cite: 1]
-    { pl: "film", en: "film / movie" }, //[cite: 1]
-    { pl: "spotkanie", en: "meeting" }, //[cite: 1]
-    { pl: "lekcja", en: "lesson" }, //[cite: 1]
-    { pl: "student / studentka", en: "student (male/female)" }, //[cite: 1]
-    { pl: "nauczycielka", en: "teacher (female)" }, //[cite: 1]
-    { pl: "pan", en: "sir / Mr." }, //[cite: 1]
-    { pl: "pani", en: "madam / Mrs." }, //[cite: 1]
-    { pl: "alfabet", en: "alphabet" }, //[cite: 1]
-    { pl: "liczebniki", en: "numbers" }, //[cite: 1]
+    // Lieux et Directions
+    { fr: "Où est... ?", pl: "Gdzie jest...?", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "À gauche", pl: "Na lewo", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "À droite", pl: "Na prawo", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "Ici", pl: "Tu / Tutaj", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "Là-bas", pl: "Tam", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "Toilettes", pl: "Toaleta", niveau: "Chapitre 1", categorie: "Lieux et directions" },
+    { fr: "Secrétariat", pl: "Sekretariat", niveau: "Chapitre 1", categorie: "Lieux et directions" },
 
-    // Numbers (0-10)
-    { pl: "zero", en: "0" }, //[cite: 1]
-    { pl: "jeden", en: "1" }, //[cite: 1]
-    { pl: "dwa", en: "2" }, //[cite: 1]
-    { pl: "trzy", en: "3" }, //[cite: 1]
-    { pl: "cztery", en: "4" }, //[cite: 1]
-    { pl: "pięć", en: "5" }, //[cite: 1]
-    { pl: "sześć", en: "6" }, //[cite: 1]
-    { pl: "siedem", en: "7" }, //[cite: 1]
-    { pl: "osiem", en: "8" }, //[cite: 1]
-    { pl: "dziewięć", en: "9" }, //[cite: 1]
-    { pl: "dziesięć", en: "10" } //[cite: 1]
-];
+    // Nombres 0-10 (Liczebniki)
+    { fr: "Zéro", pl: "Zero", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Un", pl: "Jeden", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Deux", pl: "Dwa", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Trois", pl: "Trzy", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Quatre", pl: "Cztery", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Cinq", pl: "Pięć", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Six", pl: "Sześć", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Sept", pl: "Siedem", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Huit", pl: "Osiem", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Neuf", pl: "Dziewięć", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
+    { fr: "Dix", pl: "Dziesięć", niveau: "Chapitre 1", categorie: "Nombres 0-10" },
 
-const chapter1Verbs = [
-    {
-        infinitive: "być",
-        meaning: "to be",
-        conjugations: [
-            { pronoun: "ja", form: "jestem", meaning: "I am" },
-            { pronoun: "ty", form: "jesteś", meaning: "you are" },
-            { pronoun: "on / ona / ono", form: "jest", meaning: "he / she / it is" },
-            { pronoun: "my", form: "jesteśmy", meaning: "we are" },
-            { pronoun: "wy", form: "jesteście", meaning: "you (plural) are" },
-            { pronoun: "oni / one", form: "są", meaning: "they are" }
-        ]
-    },
-    {
-        infinitive: "mieć",
-        meaning: "to have",
-        conjugations: [
-            { pronoun: "ja", form: "mam", meaning: "I have" },
-            { pronoun: "ty", form: "masz", meaning: "you have" },
-            { pronoun: "on / ona / ono", form: "ma", meaning: "he / she / it has" },
-            { pronoun: "my", form: "mamy", meaning: "we have" },
-            { pronoun: "wy", form: "macie", meaning: "you (plural) have" },
-            { pronoun: "oni / one", form: "mają", meaning: "they have" }
-        ]
-    },
-    {
-        infinitive: "nazywać się",
-        meaning: "to be called",
-        conjugations: [
-            { pronoun: "ja", form: "nazywam się", meaning: "I am called" },
-            { pronoun: "ty", form: "nazywasz się", meaning: "you are called" },
-            { pronoun: "on / ona / ono", form: "nazywa się", meaning: "he / she / it is called" },
-            { pronoun: "my", form: "nazywamy się", meaning: "we are called" },
-            { pronoun: "wy", form: "nazywacie się", meaning: "you (plural) are called" },
-            { pronoun: "oni / one", form: "nazywają się", meaning: "they are called" }
-        ]
-    },
-    {
-        infinitive: "rozumieć",
-        meaning: "to understand",
-        conjugations: [
-            { pronoun: "ja", form: "rozumiem", meaning: "I understand" },
-            { pronoun: "ty", form: "rozumiesz", meaning: "you understand" },
-            { pronoun: "on / ona / ono", form: "rozumie", meaning: "he / she / it understands" },
-            { pronoun: "my", form: "rozumiemy", meaning: "we understand" },
-            { pronoun: "wy", form: "rozumiecie", meaning: "you (plural) understand" },
-            { pronoun: "oni / one", form: "rozumieją", meaning: "they understand" }
-        ]
-    },
-    {
-        infinitive: "wiedzieć",
-        meaning: "to know (facts)",
-        conjugations: [
-            { pronoun: "ja", form: "wiem", meaning: "I know" },
-            { pronoun: "ty", form: "wiesz", meaning: "you know" },
-            { pronoun: "on / ona / ono", form: "wie", meaning: "he / she / it knows" },
-            { pronoun: "my", form: "wiemy", meaning: "we know" },
-            { pronoun: "wy", form: "wiecie", meaning: "you (plural) know" },
-            { pronoun: "oni / one", form: "wiedzą", meaning: "they know" }
-        ]
-    },
-    {
-        infinitive: "mówić",
-        meaning: "to speak",
-        conjugations: [
-            { pronoun: "ja", form: "mówię", meaning: "I speak" },
-            { pronoun: "ty", form: "mówisz", meaning: "you speak" },
-            { pronoun: "on / ona / ono", form: "mówi", meaning: "he / she / it speaks" },
-            { pronoun: "my", form: "mówimy", meaning: "we speak" },
-            { pronoun: "wy", form: "mówicie", meaning: "you (plural) speak" },
-            { pronoun: "oni / one", form: "mówią", meaning: "they speak" }
-        ]
-    }
+    // Informations personnelles (Dane personalne)
+    { fr: "Prénom", pl: "Imię", niveau: "Chapitre 1", categorie: "Informations personnelles" },
+    { fr: "Nom de famille", pl: "Nazwisko", niveau: "Chapitre 1", categorie: "Informations personnelles" },
+    { fr: "Nationalité", pl: "Narodowość", niveau: "Chapitre 1", categorie: "Informations personnelles" },
+    { fr: "Adresse", pl: "Adres", niveau: "Chapitre 1", categorie: "Informations personnelles" },
+    { fr: "Numéro de téléphone", pl: "Numer telefonu", niveau: "Chapitre 1", categorie: "Informations personnelles" },
+
+    // Vocabulaire divers
+    { fr: "Eau", pl: "Woda", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Café", pl: "Kawa", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Thé", pl: "Herbata", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Sucre", pl: "Cukier", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Internet", pl: "Internet", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Ordinateurs", pl: "Komputery", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Gratuit", pl: "Gratis", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Fatigué", pl: "Zmęczony", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+    { fr: "Programme culturel", pl: "Program kulturalny", niveau: "Chapitre 1", categorie: "Vocabulaire divers" }
 ];
