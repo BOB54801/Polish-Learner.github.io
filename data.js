@@ -1,596 +1,165 @@
-const vocabulaire = [
-    // A1 - Salutations et expressions polies
-    { fr: "Salut / Au revoir", pl: "Cześć", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Bonjour", pl: "Dzień dobry", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Bonsoir", pl: "Dobry wieczór", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Bonne nuit", pl: "Dobranoc", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Au revoir", pl: "Do widzenia", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Merci", pl: "Dziękuję", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "S'il vous plaît", pl: "Proszę", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Pardon / Excusez-moi", pl: "Przepraszam", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Oui", pl: "Tak", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Non", pl: "Nie", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Merci (informel)", pl: "Dzięki", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "De rien", pl: "Nie ma za co", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Ravi de te rencontrer", pl: "Miło cię poznać", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Santé ! / À tes souhaits !", pl: "Na zdrowie!", niveau: "A1", categorie: "Salutations et expressions polies" },
-    { fr: "Bon appétit !", pl: "Smacznego!", niveau: "A1", categorie: "Salutations et expressions polies" },
-    
-    // A1 - Informations personnelles
-    { fr: "Comment t'appelles-tu ?", pl: "Jak masz na imię?", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "Je m'appelle...", pl: "Mam na imię...", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "D'où viens-tu ?", pl: "Skąd jesteś?", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "Je suis d'Espagne", pl: "Jestem z Hiszpanii", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "Quel âge as-tu ?", pl: "Ile masz lat?", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "J'ai ... ans", pl: "Mam ... lat", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "Où habites-tu ?", pl: "Gdzie mieszkasz?", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "J'habite à...", pl: "Mieszkam w...", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "Qu'est-ce que tu fait ?", pl: "Czym się zajmujesz", niveau: "A1", categorie: "Informations personnelles" },
-    { fr: "J'habite à...", pl: "Mieszkam w...", niveau: "A1", categorie: "Informations personnelles" },
-    
-    // A1 - Famille
-    { fr: "Famille", pl: "Rodzina", niveau: "A1", categorie: "Famille" },
-    { fr: "Maman", pl: "Mama", niveau: "A1", categorie: "Famille" },
-    { fr: "Papa", pl: "Tata", niveau: "A1", categorie: "Famille" },
-    { fr: "Frère", pl: "Brat", niveau: "A1", categorie: "Famille" },
-    { fr: "Sœur", pl: "Siostra", niveau: "A1", categorie: "Famille" },
-    { fr: "Mari", pl: "Mąż", niveau: "A1", categorie: "Famille" },
-    { fr: "Femme (épouse)", pl: "Żona", niveau: "A1", categorie: "Famille" },
-    { fr: "Enfant", pl: "Dziecko", niveau: "A1", categorie: "Famille" },
-    { fr: "Fils", pl: "Syn", niveau: "A1", categorie: "Famille" },
-    { fr: "Fille", pl: "Córka", niveau: "A1", categorie: "Famille" },
-    { fr: "Ami (homme)", pl: "Przyjaciel", niveau: "A1", categorie: "Famille" },
-    { fr: "Amie (femme)", pl: "Przyjaciółka", niveau: "A1", categorie: "Famille" },
-    
-    // A1 - Nombres
-    { fr: "Un", pl: "Jeden", niveau: "A1", categorie: "Nombres" },
-    { fr: "Deux", pl: "Dwa", niveau: "A1", categorie: "Nombres" },
-    { fr: "Trois", pl: "Trzy", niveau: "A1", categorie: "Nombres" },
-    { fr: "Quatre", pl: "Cztery", niveau: "A1", categorie: "Nombres" },
-    { fr: "Cinq", pl: "Pięć", niveau: "A1", categorie: "Nombres" },
-    { fr: "Six", pl: "Sześć", niveau: "A1", categorie: "Nombres" },
-    { fr: "Sept", pl: "Siedem", niveau: "A1", categorie: "Nombres" },
-    { fr: "Huit", pl: "Osiem", niveau: "A1", categorie: "Nombres" },
-    { fr: "Neuf", pl: "Dziewięć", niveau: "A1", categorie: "Nombres" },
-    { fr: "Dix", pl: "Dziesięć", niveau: "A1", categorie: "Nombres" },
-    
-    // A1 - Nourriture et boissons
-    { fr: "Pain", pl: "Chleb", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Eau", pl: "Woda", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Café", pl: "Kawa", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Thé", pl: "Herbata", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Lait", pl: "Mleko", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Jus", pl: "Sok", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Soupe", pl: "Zupa", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Viande", pl: "Mięso", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Poisson", pl: "Ryba", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Fromage", pl: "Ser", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Œuf", pl: "Jajko", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Fruits", pl: "Owoce", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Légumes", pl: "Warzywa", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Bière", pl: "Piwo", niveau: "A1", categorie: "Nourriture et boissons" },
-    { fr: "Vin", pl: "Wino", niveau: "A1", categorie: "Nourriture et boissons" },
-    
-    // A1 - Verbes courants
-    { fr: "Être", pl: "Być", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Avoir", pl: "Mieć", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Aller (à pied)", pl: "Iść", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Aller (en véhicule)", pl: "Jechać", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Manger", pl: "Jeść", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Boire", pl: "Pić", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Parler", pl: "Mówić", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Comprendre", pl: "Rozumieć", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Lire", pl: "Czytać", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Écrire", pl: "Pisać", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Aimer", pl: "Lubić", niveau: "A1", categorie: "Verbes courants" },
-    { fr: "Vouloir", pl: "Chcieć", niveau: "A1", categorie: "Verbes courants" },
-    
-    // A1 - Temps et calendrier
-    { fr: "Aujourd'hui", pl: "Dzisiaj", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Demain", pl: "Jutro", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Hier", pl: "Wczoraj", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Maintenant", pl: "Teraz", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Heure", pl: "Godzina", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Lundi", pl: "Poniedziałek", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Mardi", pl: "Wtorek", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Mercredi", pl: "Środa", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Jeudi", pl: "Czwartek", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Vendredi", pl: "Piątek", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Samedi", pl: "Sobota", niveau: "A1", categorie: "Temps et calendrier" },
-    { fr: "Dimanche", pl: "Niedziela", niveau: "A1", categorie: "Temps et calendrier" },
-    
-    // A1 - Lieux et directions
-    { fr: "Où est...?", pl: "Gdzie jest...?", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Magasin", pl: "Sklep", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Maison", pl: "Dom", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Ville", pl: "Miasto", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Rue", pl: "Ulica", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Restaurant", pl: "Restauracja", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Hôpital", pl: "Szpital", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Pharmacie", pl: "Apteka", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Gare", pl: "Dworzec", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Gauche", pl: "Lewo", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Droite", pl: "Prawo", niveau: "A1", categorie: "Lieux et directions" },
-    { fr: "Tout droit", pl: "Prosto", niveau: "A1", categorie: "Lieux et directions" },
-    
-    // A1 - Adjectifs et mots utiles
-    { fr: "Bon", pl: "Dobry", niveau: "A1", categorie: "Adjectifs et mots utiles" },
-    { fr: "Mauvais", pl: "Zły", niveau: "A1", categorie: "Adjectifs et mots utiles" },
-    { fr: "Grand", pl: "Duży", niveau: "A1", categorie: "Adjectifs et mots utiles" },
-    { fr: "Petit", pl: "Mały", niveau: "A1", categorie: "Adjectifs et mots utiles" },
+const chapter1Vocab = [
+    // Greetings & Goodbyes
+    { pl: "Cześć", en: "Hello / Bye" }, //
+    { pl: "Dzień dobry", en: "Good morning / Good day" }, //
+    { pl: "Dobry wieczór", en: "Good evening" }, //[cite: 1]
+    { pl: "Dobranoc", en: "Good night" }, //[cite: 1]
+    { pl: "Do widzenia", en: "Goodbye" }, //[cite: 1]
+    { pl: "Do jutra", en: "See you tomorrow" }, //[cite: 1]
+    { pl: "Do zobaczenia", en: "See you" }, //[cite: 1]
+    { pl: "Na razie", en: "See you later / Bye for now" }, //[cite: 1]
 
-    // A2 - Routine quotidienne et maison
-    { fr: "Se lever", pl: "Wstawać", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Se brosser les dents", pl: "Myć zęby", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Prendre une douche", pl: "Brać prysznic", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Préparer le dîner", pl: "Gotować obiad", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Nettoyer / Ranger", pl: "Sprzątać", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Se reposer", pl: "Odpoczywać", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Aller se coucher", pl: "Kłaść się spać", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Appartement", pl: "Mieszkanie", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Cuisine", pl: "Kuchnia", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Salle de bain", pl: "Łazienka", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Chambre à coucher", pl: "Sypialnia", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    { fr: "Réfrigérateur", pl: "Lodówka", niveau: "A2", categorie: "Routine quotidienne et maison" },
-    
-    // A2 - Travail et éducation
-    { fr: "Travail", pl: "Praca", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Chercher du travail", pl: "Szukać pracy", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Étudier / Apprendre", pl: "Uczyć się", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "École", pl: "Szkoła", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Université", pl: "Uniwersytet", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Bureau", pl: "Biuro", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Patron", pl: "Szef", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Collègue", pl: "Kolega z pracy", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Réunion", pl: "Spotkanie", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Examen", pl: "Egzamin", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Difficile", pl: "Trudny", niveau: "A2", categorie: "Travail et éducation" },
-    { fr: "Facile", pl: "Łatwy", niveau: "A2", categorie: "Travail et éducation" },
-    
-    // A2 - Santé et corps
-    { fr: "Se sentir bien", pl: "Czuć się dobrze", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Se sentir mal", pl: "Czuć się źle", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Je suis malade", pl: "Jestem chory", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "J'ai mal à la tête", pl: "Boli mnie głowa", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Ventre / Estomac", pl: "Brzuch", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Médecin", pl: "Lekarz", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Médicament", pl: "Lekarstwo", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Santé", pl: "Zdrowie", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Rhume", pl: "Przeziębienie", niveau: "A2", categorie: "Santé et corps" },
-    { fr: "Prendre rendez-vous", pl: "Umówić wizytę", niveau: "A2", categorie: "Santé et corps" },
-    
-    // A2 - Achats et services
-    { fr: "Combien ça coûte ?", pl: "Ile to kosztuje?", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Payer par carte", pl: "Płacić kartą", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Espèces", pl: "Gotówka", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Ticket de caisse", pl: "Paragon", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Boulangerie", pl: "Piekarnia", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Prix", pl: "Cena", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Bon marché", pl: "Tani", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Cher", pl: "Drogi", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Acheter", pl: "Kupować", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Vendre", pl: "Sprzedawać", niveau: "A2", categorie: "Achats et services" },
-    { fr: "Promotion", pl: "Promocja", niveau: "A2", categorie: "Achats et services" },
-    
-    // A2 - Voyages et transports
-    { fr: "Voyager", pl: "Podróżować", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Billet", pl: "Bilet", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Train", pl: "Pociąg", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Avion", pl: "Samolot", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Aéroport", pl: "Lotnisko", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Arrêt de bus", pl: "Przystanek", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Être en retard", pl: "Spóźnić się", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Louer une voiture", pl: "Wynająć samochód", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Où est l'hôtel ?", pl: "Gdzie jest hotel?", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Vacances", pl: "Wakacje", niveau: "A2", categorie: "Voyages et transports" },
-    { fr: "Excursion / Voyage", pl: "Wycieczka", niveau: "A2", categorie: "Voyages et transports" },
-    
-    // A2 - Émotions et opinions
-    { fr: "Je pense que...", pl: "Myślę, że...", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "À mon avis", pl: "Moim zdaniem", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Être d'accord", pl: "Zgadzać się", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Joyeux", pl: "Wesoły", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Triste", pl: "Smutny", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "En colère / Mauvais", pl: "Zły", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Fatigué", pl: "Zmęczony", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Intéressant / Curieux", pl: "Ciekawy", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Ennuyeux", pl: "Nudny", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Avoir peur", pl: "Bać się", niveau: "A2", categorie: "Émotions et opinions" },
-    { fr: "Aimer (Amour)", pl: "Kochać", niveau: "A2", categorie: "Émotions et opinions" },
-    
-    // A2 - Météo et nature
-    { fr: "Météo", pl: "Pogoda", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Le soleil brille", pl: "Świeci słońce", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Il pleut", pl: "Pada deszcz", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Il neige", pl: "Pada śnieg", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Il fait froid", pl: "Jest zimno", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Il fait chaud", pl: "Jest gorąco", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Vent", pl: "Wiatr", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Forêt", pl: "Las", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Mer", pl: "Morze", niveau: "A2", categorie: "Météo et nature" },
-    { fr: "Montagnes", pl: "Góry", niveau: "A2", categorie: "Météo et nature" },
-    
-    // A2 - Loisirs et temps libre
-    { fr: "Temps libre", pl: "Czas wolny", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Regarder un film", pl: "Oglądać film", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Écouter de la musique", pl: "Słuchać muzyki", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Jouer au football", pl: "Grać w piłkę", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Se promener", pl: "Spacerować", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Courir", pl: "Biegać", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Nager", pl: "Pływać", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Danse", pl: "Taniec", niveau: "A2", categorie: "Loisirs et temps libre" },
-    { fr: "Livre", pl: "Książka", niveau: "A2", categorie: "Loisirs et temps libre" },
-    
-    // A2 - Phrases utiles pour la conversation
-    { fr: "Quoi de neuf ?", pl: "Co słychać?", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Tout va bien", pl: "Wszystko w porządku", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Pouvez-vous répéter ?", pl: "Możesz powtórzyć?", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Je ne m'en souviens pas", pl: "Nie pamiętam", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Ça dépend de...", pl: "Zależy od...", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "J'ai une question", pl: "Mam pytanie", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "À quelle heure ?", pl: "O której godzinie?", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Vraiment ?", pl: "Naprawdę?", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Bien sûr", pl: "Oczywiście", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Malheureusement", pl: "Niestety", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Justement", pl: "Właśnie", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Peut-être", pl: "Może", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Probablement", pl: "Prawdopodobnie", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
-    { fr: "Bonne chance !", pl: "Powodzenia!", niveau: "A2", categorie: "Phrases utiles pour la conversation" },
+    // Introductions & Personal Info
+    { pl: "Jestem...", en: "I am..." }, //[cite: 1]
+    { pl: "Nazywam się...", en: "My name is (first and last name)..." }, //[cite: 1]
+    { pl: "Mam na imię...", en: "My name is (first name)..." }, //[cite: 1]
+    { pl: "Miło mi", en: "Nice to meet you" }, //[cite: 1]
+    { pl: "Bardzo mi miło", en: "Very nice to meet you" }, //[cite: 1]
+    { pl: "Mnie również", en: "Me too / Likewise" }, //[cite: 1]
+    { pl: "Miło mi cię poznać", en: "Nice to meet you (informal)" }, //[cite: 1]
+    { pl: "Miło mi pana poznać", en: "Nice to meet you (formal, to a man)" }, //[cite: 1]
+    { pl: "Miło mi panią poznać", en: "Nice to meet you (formal, to a woman)" }, //[cite: 1]
+    { pl: "Jak masz na imię?", en: "What is your name? (informal)" }, //[cite: 1]
+    { pl: "Jak się nazywasz?", en: "What is your name/surname? (informal)" }, //[cite: 1]
+    { pl: "Jak pani/pan ma na imię?", en: "What is your name? (formal)" }, //[cite: 1]
+    { pl: "Jak się pani/pan nazywa?", en: "What is your name/surname? (formal)" }, //[cite: 1]
+    { pl: "Imię", en: "First name" }, //[cite: 1]
+    { pl: "Nazwisko", en: "Last name" }, //[cite: 1]
+    { pl: "Narodowość", en: "Nationality" }, //[cite: 1]
+    { pl: "Adres", en: "Address" }, //[cite: 1]
+    { pl: "Numer telefonu", en: "Phone number" }, //[cite: 1]
 
-    // B1 - Travail et carrière
-    { fr: "Expérience", pl: "Doświadczenie", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Compétences", pl: "Umiejętności", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Salaire", pl: "Wynagrodzenie", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Contrat de travail", pl: "Umowa o pracę", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Démissionner", pl: "Zwolnić się", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Être promu", pl: "Awansować", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Responsabilité", pl: "Odpowiedzialność", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Entreprise", pl: "Przedsiębiorstwo", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Qualifications", pl: "Kwalifikacje", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Chômeur", pl: "Bezrobotny", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Coopérer", pl: "Współpracować", niveau: "B1", categorie: "Travail et carrière" },
-    { fr: "Embaucher", pl: "Zatrudnić", niveau: "B1", categorie: "Travail et carrière" },
-    
-    // B1 - Société et médias
-    { fr: "Actualités", pl: "Wiadomości", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Gouvernement", pl: "Rząd", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Société", pl: "Społeczeństwo", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Élections", pl: "Wybory", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Droit / Loi", pl: "Prawo", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Environnement", pl: "Środowisko", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Pollution", pl: "Zanieczyszczenie", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Sécurité", pl: "Bezpieczeństwo", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Liberté", pl: "Wolność", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Publicité", pl: "Reklama", niveau: "B1", categorie: "Société et médias" },
-    { fr: "Article", pl: "Artykuł", niveau: "B1", categorie: "Société et médias" },
-    
-    // B1 - Sentiments et caractère
-    { fr: "Patience", pl: "Cierpliwość", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Satisfait", pl: "Zadowolony", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Surpris", pl: "Zaskoczony", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Avoir honte", pl: "Wstydzić się", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Courageux", pl: "Odważny", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Têtu", pl: "Uparty", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Sensible", pl: "Wrażliwy", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Ambitieux", pl: "Ambitny", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Jaloux", pl: "Zazdrosny", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Faire confiance", pl: "Ufać", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Espoir", pl: "Nadzieja", niveau: "B1", categorie: "Sentiments et caractère" },
-    { fr: "Compassion", pl: "Współczucie", niveau: "B1", categorie: "Sentiments et caractère" },
-    
-    // B1 - Éducation et science
-    { fr: "Éducation (niveau)", pl: "Wykształcenie", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Connaissance", pl: "Wiedza", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Recherche", pl: "Badania", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Découverte", pl: "Odkrycie", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Développement", pl: "Rozwój", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Technologie", pl: "Technologia", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Intelligence artificielle", pl: "Sztuczna inteligencja", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Invention", pl: "Wynalazek", niveau: "B1", categorie: "Éducation et science" },
-    { fr: "Cours de langue", pl: "Kurs językowy", niveau: "B1", categorie: "Éducation et science" },
-    
-    // B1 - Voyages et culture
-    { fr: "Monuments", pl: "Zabytki", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Visiter", pl: "Zwiedzać", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Voyageur", pl: "Podróżnik", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Exposition", pl: "Wystawa", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Théâtre", pl: "Teatr", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Concert", pl: "Koncert", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Tradition", pl: "Tradycja", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "Coutumes", pl: "Zwyczaje", niveau: "B1", categorie: "Voyages et culture" },
-    { fr: "À l'étranger", pl: "Zagranica", niveau: "B1", categorie: "Voyages et culture" },
-    
-    // B1 - Verbes abstraits
-    { fr: "Décider", pl: "Decydować", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Expliquer", pl: "Wyjaśniać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Promettre", pl: "Obiecywać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Comparer", pl: "Porównywać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Soupçonner", pl: "Podejrzewać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Convaincre", pl: "Przekonywać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Influencer", pl: "Wpływać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Utiliser", pl: "Korzystać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Atteindre", pl: "Osiągnąć", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Éviter", pl: "Unikać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Changer", pl: "Zmieniać", niveau: "B1", categorie: "Verbes abstraits" },
-    { fr: "Soutenir", pl: "Wspierać", niveau: "B1", categorie: "Verbes abstraits" },
-    
-    // B1 - Mots de liaison
-    { fr: "Parce que", pl: "Ponieważ", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "C'est pourquoi", pl: "Dlatego", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Bien que", pl: "Chociaż", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Au lieu de", pl: "Zamiast", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Alors", pl: "Wtedy", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Cependant", pl: "Jednak", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "De plus", pl: "W dodatku", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Malgré cela", pl: "Mimo to", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Enfin", pl: "Wreszcie", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "Probablement", pl: "Prawdopodobnie", niveau: "B1", categorie: "Mots de liaison" },
-    { fr: "En fait / Correctement", pl: "Właściwie", niveau: "B1", categorie: "Mots de liaison" },
-    
-    // B1 - Mode de vie et santé
-    { fr: "Stress", pl: "Stres", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Mode de vie sain", pl: "Zdrowy tryb życia", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Régime", pl: "Dieta", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Se nourrir", pl: "Odżywiać się", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Salle de sport", pl: "Siłownia", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Condition physique", pl: "Kondycja", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Addiction", pl: "Uzależnienie", niveau: "B1", categorie: "Mode de vie et santé" },
-    { fr: "Se détendre", pl: "Relaksować się", niveau: "B1", categorie: "Mode de vie et santé" },
-    
-    // B1 - Exprimer des opinions et hypothèses
-    { fr: "Il me semble que...", pl: "Wydaje mi się, że...", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "D'une part...", pl: "Z jednej strony...", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "D'autre part...", pl: "Z drugiej strony...", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "Supposer", pl: "Przypuszczać", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "Douter", pl: "Wątpić", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "Je suis tout à fait d'accord", pl: "Zgadzam się całkowicie", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "Tu as raison", pl: "Masz rację", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    { fr: "Ça dépend", pl: "To zależy", niveau: "B1", categorie: "Exprimer des opinions et hypothèses" },
-    
-    // B1 - Problèmes quotidiens et situations
-    { fr: "Erreur", pl: "Błąd", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Solution", pl: "Rozwiązanie", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Réparer", pl: "Naprawić", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Tomber en panne", pl: "Zepsuć się", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Occasion", pl: "Okazja", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Différence", pl: "Różnica", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Similitude", pl: "Podobieństwo", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
-    { fr: "Succès", pl: "Sukces", niveau: "B1", categorie: "Problèmes quotidiens et situations" },
+    // Classroom & Useful Phrases
+    { pl: "Przepraszam", en: "Excuse me / I'm sorry" }, //[cite: 1]
+    { pl: "Dziękuję / Dziękuję bardzo", en: "Thank you / Thank you very much" }, //[cite: 1]
+    { pl: "Proszę", en: "Please / Here you go / You're welcome" }, //[cite: 1]
+    { pl: "Tak", en: "Yes" }, //[cite: 1]
+    { pl: "Nie", en: "No" }, //[cite: 1]
+    { pl: "Nie rozumiem", en: "I don't understand" }, //[cite: 1]
+    { pl: "Nie wiem", en: "I don't know" }, //[cite: 1]
+    { pl: "Mam pytanie", en: "I have a question" }, //[cite: 1]
+    { pl: "Proszę powtórzyć", en: "Please repeat" }, //[cite: 1]
+    { pl: "Proszę przeliterować", en: "Please spell" }, //[cite: 1]
+    { pl: "Proszę przeczytać", en: "Please read" }, //[cite: 1]
+    { pl: "Proszę napisać", en: "Please write" }, //[cite: 1]
+    { pl: "Co to znaczy?", en: "What does it mean?" }, //[cite: 1]
+    { pl: "Co to jest?", en: "What is this?" }, //[cite: 1]
+    { pl: "Jak się mówi po polsku...?", en: "How do you say ... in Polish?" }, //[cite: 1]
+    { pl: "Gdzie jest...?", en: "Where is...?" }, //[cite: 1]
+    { pl: "Czy tu można palić?", en: "Is smoking allowed here?" }, //[cite: 1]
 
-    // B2 - Affaires et économie
-    { fr: "Entrepreneur", pl: "Przedsiębiorca", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Concurrence", pl: "Konkurencja", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Investir", pl: "Inwestować", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Profit", pl: "Zysk", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Perte", pl: "Strata", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Impôt", pl: "Podatek", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Économie", pl: "Gospodarka", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Budget", pl: "Budżet", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Négociations", pl: "Negocjacje", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Efficacité", pl: "Wydajność", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Gérer", pl: "Zarządzać", niveau: "B2", categorie: "Affaires et économie" },
-    { fr: "Marché du travail", pl: "Rynek pracy", niveau: "B2", categorie: "Affaires et économie" },
-    
-    // B2 - Politique et droit
-    { fr: "Constitution", pl: "Konstytucja", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Citoyen", pl: "Obywatel", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Justice", pl: "Sprawiedliwość", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Crime", pl: "Przestępstwo", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Preuve", pl: "Dowód", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Témoin", pl: "Świadek", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Accuser", pl: "Oskarżyć", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Verdict", pl: "Wyrok", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Parlement", pl: "Parlament", niveau: "B2", categorie: "Politique et droit" },
-    { fr: "Démocratie", pl: "Demokracja", niveau: "B2", categorie: "Politique et droit" },
-    
-    // B2 - Environnement et enjeux mondiaux
-    { fr: "Changement climatique", pl: "Zmiana klimatu", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Réchauffement climatique", pl: "Globalne ocieplenie", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Énergies renouvelables", pl: "Odnawialne źródła energii", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Écologie", pl: "Ekologia", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Développement durable", pl: "Zrównoważony rozwój", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Espèce", pl: "Gatunek", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Catastrophe", pl: "Katastrofa", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Pauvreté", pl: "Ubóstwo", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    { fr: "Faim", pl: "Głód", niveau: "B2", categorie: "Environnement et enjeux mondiaux" },
-    
-    // B2 - Science et concepts intellectuels
-    { fr: "Théorie", pl: "Teoria", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Hypothèse", pl: "Hipoteza", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Prouver", pl: "Dowodzić", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Conscience", pl: "Świadomość", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Logique", pl: "Logika", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Paradoxe", pl: "Paradoks", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Réalité", pl: "Rzeczywistość", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Phénomène", pl: "Zjawisko", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    { fr: "Analyser", pl: "Analizować", niveau: "B2", categorie: "Science et concepts intellectuels" },
-    
-    // B2 - Caractère humain et psychologie
-    { fr: "Personnalité", pl: "Osobowość", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Comportement", pl: "Zachowanie", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Identité", pl: "Tożsamość", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Confiance en soi", pl: "Pewność siebie", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Introverti", pl: "Introwertyk", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Extraverti", pl: "Ekstrawertyk", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Empathie", pl: "Empatia", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Préjugé", pl: "Uprzedzenie", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Sens de l'humour", pl: "Poczucie humoru", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    { fr: "Conscience (morale)", pl: "Sumienie", niveau: "B2", categorie: "Caractère humain et psychologie" },
-    
-    // B2 - Verbes avancés
-    { fr: "Participer", pl: "Uczestniczyć", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Se demander", pl: "Zastanawiać się", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Introduire", pl: "Wprowadzać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Contrecarrer", pl: "Przeciwdziałać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Limiter", pl: "Ograniczać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Augmenter", pl: "Zwiększać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Diminuer", pl: "Zmniejszać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Exiger", pl: "Wymagać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Assurer", pl: "Zapewniać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Rejeter", pl: "Odrzucać", niveau: "B2", categorie: "Verbes avancés" },
-    { fr: "Accepter", pl: "Akceptować", niveau: "B2", categorie: "Verbes avancés" },
-    
-    // B2 - Opinion et débat
-    { fr: "Argumenter", pl: "Argumentować", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Conviction", pl: "Przekonanie", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Point de vue", pl: "Punkt widzenia", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Controversé", pl: "Kontrowersyjny", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Doute", pl: "Wątpliwość", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Avantage", pl: "Zaleta", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Inconvénient", pl: "Wada", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Essentiel", pl: "Istotny", niveau: "B2", categorie: "Opinion et débat" },
-    { fr: "Commun", pl: "Powszechny", niveau: "B2", categorie: "Opinion et débat" },
-    
-    // B2 - Culture et médias
-    { fr: "Créativité", pl: "Twórczość", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Héritage", pl: "Dziedzictwo", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Influence", pl: "Wpływ", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Destinataire", pl: "Odbiorca", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Presse", pl: "Prasa", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Censure", pl: "Cenzura", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Image / Réputation", pl: "Wizerunek", niveau: "B2", categorie: "Culture et médias" },
-    { fr: "Renommée", pl: "Sława", niveau: "B2", categorie: "Culture et médias" },
-    
-    // B2 - Connecteurs avancés
-    { fr: "Par conséquent", pl: "W konsekwencji", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "En tenant compte de", pl: "Biorąc pod uwagę", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "À son tour", pl: "Z kolei", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "Contrairement à", pl: "W przeciwieństwie do", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "À condition que", pl: "Pod warunkiem, że", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "Néanmoins", pl: "Niemniej jednak", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "Par conséquent (lien)", pl: "W związku z tym", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "En d'autres termes", pl: "Innymi słowy", niveau: "B2", categorie: "Connecteurs avancés" },
-    { fr: "Dans la mesure du possible", pl: "W miarę możliwości", niveau: "B2", categorie: "Connecteurs avancés" },
-    
-    // B2 - Phrases idiomatiques et courantes
-    { fr: "Sans aucun doute", pl: "Bez dwóch zdań", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Honnêtement", pl: "Mówiąc szczerze", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Prendre en considération", pl: "Brać pod uwagę", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Faire un compromis", pl: "Iść na kompromis", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Avoir une influence sur...", pl: "Mieć wpływ na...", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Se rendre compte", pl: "Zdać sobie sprawę", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Entrer en jeu", pl: "Wchodzić w grę", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "À long terme", pl: "Na dłuższą metę", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Tirer des conclusions", pl: "Wyciągać wnioski", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Faire face à...", pl: "Mieć do czynienia z...", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Faire attention à...", pl: "Zwracać uwagę na...", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
-    { fr: "Parvenir à un accord", pl: "Osiągnąć porozumienie", niveau: "B2", categorie: "Phrases idiomatiques et courantes" },
+    // Directions & Locations
+    { pl: "na lewo", en: "to the left" }, //[cite: 1]
+    { pl: "na prawo", en: "to the right" }, //[cite: 1]
+    { pl: "tu / tutaj", en: "here" }, //[cite: 1]
+    { pl: "tam", en: "there" }, //[cite: 1]
 
-    // C1 - Académique et professionnel
-    { fr: "Analyse de fond", pl: "Analiza merytoryczna", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Conditions", pl: "Uwarunkowania", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Controverse", pl: "Kontrowersja", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Déployer", pl: "Wdrożyć", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Entreprise (projet)", pl: "Przedsięwzięcie", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Consensus", pl: "Konsensus", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Innovation", pl: "Innowacyjność", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Stratégique", pl: "Strategiczny", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Compensation", pl: "Kompensata", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Offre et demande", pl: "Popyt i podaż", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Diffusion", pl: "Dyfuzja", niveau: "C1", categorie: "Académique et professionnel" },
-    { fr: "Hiérarchie", pl: "Hierarchia", niveau: "C1", categorie: "Académique et professionnel" },
-    
-    // C1 - Concepts abstraits
-    { fr: "Existence", pl: "Egzystencja", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Éphémère", pl: "Efemeryczny", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Ambivalence", pl: "Ambiwalencja", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Détermination", pl: "Determinacja", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Singularité", pl: "Osobliwość", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Subjectivité", pl: "Subiektywizm", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Primitif", pl: "Prymitywny", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Identité nationale", pl: "Tożsamość narodowa", niveau: "C1", categorie: "Concepts abstraits" },
-    { fr: "Solidarité", pl: "Solidarność", niveau: "C1", categorie: "Concepts abstraits" },
-    
-    // C1 - Verbes formels et sophistiqués
-    { fr: "Justifier", pl: "Uzasadnić", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Contester", pl: "Kwestionować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Laisser de côté", pl: "Abstrahować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Confronter", pl: "Konfrontować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Manipuler", pl: "Manipulować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Évoluer", pl: "Ewoluować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Minimiser", pl: "Zbagatelizować", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Rendre plus attractif", pl: "Uatrakcyjnić", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    { fr: "Envisager", pl: "Rozważać", niveau: "C1", categorie: "Verbes formels et sophistiqués" },
-    
-    // C1 - Idiomes avancés
-    { fr: "Tourner autour du pot", pl: "Owijać w bawełnę", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Jeter un coup d'œil", pl: "Rzucić okiem", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Examiner à la loupe", pl: "Wziąć pod lupę", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Avoir du fil à retordre", pl: "Mieć twardy orzech do zgryzienia", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Se fourrer dans un pétrin", pl: "Wpaść jak śliwka w kompot", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Vendre la peau de l'ours...", pl: "Dzielić skórę na niedźwiedziu", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Sentir l'entourloupe", pl: "Poczuć pismo nosem", niveau: "C1", categorie: "Idiomes avancés" },
-    { fr: "Remonter la pente", pl: "Wyjść na prostą", niveau: "C1", categorie: "Idiomes avancés" },
-    
-    // C1 - Argot général
-    { fr: "Cool / Pas de problème", pl: "Spoko", niveau: "C1", categorie: "Argot général" },
-    { fr: "Salut (diminutif)", pl: "Siema", niveau: "C1", categorie: "Argot général" },
-    { fr: "À plus (diminutif)", pl: "Nara", niveau: "C1", categorie: "Argot général" },
-    { fr: "Désastre (argot)", pl: "Masakra", niveau: "C1", categorie: "Argot général" },
-    { fr: "Génial (argot)", pl: "Sztos", niveau: "C1", categorie: "Argot général" },
-    { fr: "Bavarder", pl: "Gadać", niveau: "C1", categorie: "Argot général" },
-    { fr: "Piger", pl: "Czaić", niveau: "C1", categorie: "Argot général" },
-    { fr: "Piger (variante)", pl: "Kumać", niveau: "C1", categorie: "Argot général" },
-    { fr: "Duperie", pl: "Ściema", niveau: "C1", categorie: "Argot général" },
-    { fr: "Ringard / Cringe", pl: "Wiocha", niveau: "C1", categorie: "Argot général" },
-    { fr: "La honte", pl: "Obciach", niveau: "C1", categorie: "Argot général" },
-    { fr: "Fric / Blé", pl: "Kasa / Siano", niveau: "C1", categorie: "Argot général" },
-    { fr: "Bagnole", pl: "Fura", niveau: "C1", categorie: "Argot général" },
-    { fr: "Baraque", pl: "Chata", niveau: "C1", categorie: "Argot général" },
-    { fr: "Tranquille", pl: "Luzik", niveau: "C1", categorie: "Argot général" },
-    { fr: "Gérer", pl: "Ogarniać", niveau: "C1", categorie: "Argot général" },
-    { fr: "S'en ficher", pl: "Olewać", niveau: "C1", categorie: "Argot général" },
-    { fr: "Super (vulgaire)", pl: "Zajebiście", niveau: "C1", categorie: "Argot général" },
-    { fr: "S'énerver", pl: "Wkurzać się", niveau: "C1", categorie: "Argot général" },
-    { fr: "Dégager", pl: "Spadać", niveau: "C1", categorie: "Argot général" },
-    { fr: "Kiffer", pl: "Jarać się", niveau: "C1", categorie: "Argot général" },
-    
-    // C1 - Décrire des personnes
-    { fr: "Pote / Mec", pl: "Ziomek / Ziom", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Copain", pl: "Kumpel", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Meuf", pl: "Laska", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Mec / Type", pl: "Facet", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Gars", pl: "Gość", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Pigeon", pl: "Frajer", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Intello", pl: "Kujon", niveau: "C1", categorie: "Décrire des personnes" },
-    { fr: "Râleur", pl: "Maruda", niveau: "C1", categorie: "Décrire des personnes" },
-    
-    // C1 - Activités et sentiments
-    { fr: "Fête / Soirée", pl: "Impreza / Melanż", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Sortir en ville", pl: "Iść w miasto", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Gueule de bois", pl: "Kac", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Soirée à la maison", pl: "Domówka", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Bière (argot)", pl: "Browar", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Être mort de fatigue", pl: "Zgon", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Grosse rigolade", pl: "Beka", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Gaffe", pl: "Przypał", niveau: "C1", categorie: "Activités et sentiments" },
-    { fr: "Échec cuisant", pl: "Porażka", niveau: "C1", categorie: "Activités et sentiments" },
-    
-    // C1 - Connecteurs et phrases pour C1
-    { fr: "Quoi qu'il en soit", pl: "Bądź co bądź", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "De toute façon", pl: "W każdym razie", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "En résumé", pl: "Reasumując", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "D'ailleurs", pl: "Notabene", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Significatif", pl: "Znamienny", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "En effet", pl: "W istocie", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Rétrospectivement", pl: "Z perspektywy czasu", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Il ne fait aucun doute", pl: "Nie ulega wątpliwości", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Le problème c'est que...", pl: "Sęk w tym, że...", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Au fond", pl: "W gruncie rzeczy", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "En ce qui me concerne", pl: "Jeśli o mnie chodzi", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    { fr: "Soit dit en passant", pl: "Nawiasem mówiąc", niveau: "C1", categorie: "Connecteurs et phrases pour C1" },
-    
-    // C1 - Phrases professionnelles courantes
-    { fr: "Défi", pl: "Wyzwanie", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Priorité", pl: "Priorytet", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Date limite", pl: "Deadline", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Retour d'expérience", pl: "Feedback", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Réseautage", pl: "Networking", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Potentiel", pl: "Potencjał", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Efficacité", pl: "Wydajność", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Flexibilité", pl: "Elastyczność", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Compétences", pl: "Kompetencje", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Image de l'entreprise", pl: "Wizerunek firmy", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Support technique", pl: "Wsparcie techniczne", niveau: "C1", categorie: "Phrases professionnelles courantes" },
-    { fr: "Satisfaction client", pl: "Satysfakcja klienta", niveau: "C1", categorie: "Phrases professionnelles courantes" }
+    // Nouns & Entities
+    { pl: "szkoła", en: "school" }, //[cite: 1]
+    { pl: "sekretariat", en: "secretariat / office" }, //[cite: 1]
+    { pl: "prezentacja", en: "presentation" }, //[cite: 1]
+    { pl: "ulica", en: "street" }, //[cite: 1]
+    { pl: "toaleta", en: "toilet" }, //[cite: 1]
+    { pl: "woda", en: "water" }, //[cite: 1]
+    { pl: "kawa", en: "coffee" }, //[cite: 1]
+    { pl: "herbata", en: "tea" }, //[cite: 1]
+    { pl: "cukier", en: "sugar" }, //[cite: 1]
+    { pl: "program kulturalny", en: "cultural program" }, //[cite: 1]
+    { pl: "film", en: "film / movie" }, //[cite: 1]
+    { pl: "spotkanie", en: "meeting" }, //[cite: 1]
+    { pl: "lekcja", en: "lesson" }, //[cite: 1]
+    { pl: "student / studentka", en: "student (male/female)" }, //[cite: 1]
+    { pl: "nauczycielka", en: "teacher (female)" }, //[cite: 1]
+    { pl: "pan", en: "sir / Mr." }, //[cite: 1]
+    { pl: "pani", en: "madam / Mrs." }, //[cite: 1]
+    { pl: "alfabet", en: "alphabet" }, //[cite: 1]
+    { pl: "liczebniki", en: "numbers" }, //[cite: 1]
+
+    // Numbers (0-10)
+    { pl: "zero", en: "0" }, //[cite: 1]
+    { pl: "jeden", en: "1" }, //[cite: 1]
+    { pl: "dwa", en: "2" }, //[cite: 1]
+    { pl: "trzy", en: "3" }, //[cite: 1]
+    { pl: "cztery", en: "4" }, //[cite: 1]
+    { pl: "pięć", en: "5" }, //[cite: 1]
+    { pl: "sześć", en: "6" }, //[cite: 1]
+    { pl: "siedem", en: "7" }, //[cite: 1]
+    { pl: "osiem", en: "8" }, //[cite: 1]
+    { pl: "dziewięć", en: "9" }, //[cite: 1]
+    { pl: "dziesięć", en: "10" } //[cite: 1]
+];
+
+const chapter1Verbs = [
+    {
+        infinitive: "być",
+        meaning: "to be",
+        conjugations: [
+            { pronoun: "ja", form: "jestem", meaning: "I am" },
+            { pronoun: "ty", form: "jesteś", meaning: "you are" },
+            { pronoun: "on / ona / ono", form: "jest", meaning: "he / she / it is" },
+            { pronoun: "my", form: "jesteśmy", meaning: "we are" },
+            { pronoun: "wy", form: "jesteście", meaning: "you (plural) are" },
+            { pronoun: "oni / one", form: "są", meaning: "they are" }
+        ]
+    },
+    {
+        infinitive: "mieć",
+        meaning: "to have",
+        conjugations: [
+            { pronoun: "ja", form: "mam", meaning: "I have" },
+            { pronoun: "ty", form: "masz", meaning: "you have" },
+            { pronoun: "on / ona / ono", form: "ma", meaning: "he / she / it has" },
+            { pronoun: "my", form: "mamy", meaning: "we have" },
+            { pronoun: "wy", form: "macie", meaning: "you (plural) have" },
+            { pronoun: "oni / one", form: "mają", meaning: "they have" }
+        ]
+    },
+    {
+        infinitive: "nazywać się",
+        meaning: "to be called",
+        conjugations: [
+            { pronoun: "ja", form: "nazywam się", meaning: "I am called" },
+            { pronoun: "ty", form: "nazywasz się", meaning: "you are called" },
+            { pronoun: "on / ona / ono", form: "nazywa się", meaning: "he / she / it is called" },
+            { pronoun: "my", form: "nazywamy się", meaning: "we are called" },
+            { pronoun: "wy", form: "nazywacie się", meaning: "you (plural) are called" },
+            { pronoun: "oni / one", form: "nazywają się", meaning: "they are called" }
+        ]
+    },
+    {
+        infinitive: "rozumieć",
+        meaning: "to understand",
+        conjugations: [
+            { pronoun: "ja", form: "rozumiem", meaning: "I understand" },
+            { pronoun: "ty", form: "rozumiesz", meaning: "you understand" },
+            { pronoun: "on / ona / ono", form: "rozumie", meaning: "he / she / it understands" },
+            { pronoun: "my", form: "rozumiemy", meaning: "we understand" },
+            { pronoun: "wy", form: "rozumiecie", meaning: "you (plural) understand" },
+            { pronoun: "oni / one", form: "rozumieją", meaning: "they understand" }
+        ]
+    },
+    {
+        infinitive: "wiedzieć",
+        meaning: "to know (facts)",
+        conjugations: [
+            { pronoun: "ja", form: "wiem", meaning: "I know" },
+            { pronoun: "ty", form: "wiesz", meaning: "you know" },
+            { pronoun: "on / ona / ono", form: "wie", meaning: "he / she / it knows" },
+            { pronoun: "my", form: "wiemy", meaning: "we know" },
+            { pronoun: "wy", form: "wiecie", meaning: "you (plural) know" },
+            { pronoun: "oni / one", form: "wiedzą", meaning: "they know" }
+        ]
+    },
+    {
+        infinitive: "mówić",
+        meaning: "to speak",
+        conjugations: [
+            { pronoun: "ja", form: "mówię", meaning: "I speak" },
+            { pronoun: "ty", form: "mówisz", meaning: "you speak" },
+            { pronoun: "on / ona / ono", form: "mówi", meaning: "he / she / it speaks" },
+            { pronoun: "my", form: "mówimy", meaning: "we speak" },
+            { pronoun: "wy", form: "mówicie", meaning: "you (plural) speak" },
+            { pronoun: "oni / one", form: "mówią", meaning: "they speak" }
+        ]
+    }
 ];
