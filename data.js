@@ -81,8 +81,8 @@ const vocabulaire = [
     { fr: "Ordinateurs", pl: "Komputery", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
     { fr: "Gratuit", pl: "Gratis", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
     { fr: "Fatigué", pl: "Zmęczony", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
-    { fr: "Programme culturel", pl: "Program kulturalny", niveau: "Chapitre 1", categorie: "Vocabulaire divers" }
-    
+    { fr: "Programme culturel", pl: "Program kulturalny", niveau: "Chapitre 1", categorie: "Vocabulaire divers" },
+
     // État et conversation
     { fr: "Comment ça va ?", pl: "Co słychać?", niveau: "Chapitre 2", categorie: "État et conversation" },
     { fr: "Quoi de neuf pour toi ?", pl: "Co u ciebie?", niveau: "Chapitre 2", categorie: "État et conversation" },
